@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}         
+{%block content%}
+<h1 class="text-center text-info mt-5">This is login page</h1>
+<form action="" method="POST" style="width: 35%; margin : auto ; margin-top: 40px;">
+    {% csrf_token%}
+    <!-- {{form | crispy}} -->
+     {%for fm in form%}
+     {{fm.label_tag}}
+     {{fm}}
+     {{fm.errors | striptags}}
+     {%endfor%}
+    <button class="btn btn-primary p-2 mt-2">submit</button>
+</form>
+{%endblock%}

@@ -1,0 +1,28 @@
+{%extends 'base.html'%} {%load crispy_forms_tags%} {%block content%}
+<h1 class="text-center text-info mt-5">This is profle page</h1>
+<h1 class="text-center text-info mt-5">Welcome : {{user}}</h1>
+<div class="d-flex justify-content-center mt-5">
+  <p>
+    <a href="{%url 'passchange'%}" class="btn btn-success text-center  mx-4"
+      >change password</a
+    >
+  </p>
+  <p>
+    <a href="{%url 'passchange2'%}" class="btn btn-success text-center"
+      >change password without old password</a
+    >
+  </p>
+</div>
+<form
+  action=""
+  method="POST"
+  style="width: 35%; margin: auto; margin-top: 40px"
+>
+  {% csrf_token%}
+  <!-- {{form | crispy}} -->
+  {%for fm in form%} {{fm.label_tag}} {{fm}} {{fm.errors | striptags}}
+  {%endfor%}
+  <button class="btn btn-warning p-2 mt-3">edit profile</button>
+</form>
+
+{%endblock%}
